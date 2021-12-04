@@ -9,8 +9,8 @@ Route::get('/login', fn () => 'Login')->name('site.login');
 
 Route::prefix('/app')->group(function () {
   Route::get('/customers', fn () => 'customers')->name('app.customers');
-  Route::get('/providers', fn () => 'providers')->name('app.providers');
   Route::get('/products', fn () => 'products')->name('app.products');
+  Route::get('/suppliers', 'SuppliersController@index')->name('app.suppliers');
 });
 
 Route::fallback(function () {
