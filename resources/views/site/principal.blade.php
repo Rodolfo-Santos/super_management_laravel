@@ -27,24 +27,8 @@
       <div class="contact">
         <h1>Contact</h1>
         <p>If you have any questions, please contact our team using the form below.<p>
-            <form>
-              <input type="text" placeholder="Name" class="white-border">
-              <br>
-              <input type="text" placeholder="Phone" class="white-border">
-              <br>
-              <input type="text" placeholder="E-mail" class="white-border">
-              <br>
-              <select class="white-border">
-                <option value="">What is the contact reason?</option>
-                <option value="">Doubt</option>
-                <option value="">Praise</option>
-                <option value="">Complaint</option>
-              </select>
-              <br>
-              <textarea class="white-border">Fill your message here</textarea>
-              <br>
-              <button type="submit" class="white-border">Send</button>
-            </form>
+          @component('site.layouts._components.contact_form', ['class' => 'white-border'])
+          @endcomponent
       </div>
     </div>
   </div>

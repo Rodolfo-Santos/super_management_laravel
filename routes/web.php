@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PrincipalController@principal')->name('site.index');
-Route::get('/about-us', 'AboutUsController@aboutUs')->name('site.about-us');
+Route::get('/about_us', 'AboutUsController@aboutUs')->name('site.about_us');
+
 Route::get('/contact', 'ContactController@contact')->name('site.contact');
+Route::post('/contact', 'ContactController@contact')->name('site.contact');
+
 Route::get('/login', fn () => 'Login')->name('site.login');
 
 Route::prefix('/app')->group(function () {

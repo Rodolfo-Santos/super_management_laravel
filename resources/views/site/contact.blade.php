@@ -9,24 +9,10 @@
 
     <div class="page-information">
       <div class="contact-principal">
-        <form>
-          <input type="text" placeholder="Name" class="black-border">
-          <br>
-          <input type="text" placeholder="Phone" class="black-border">
-          <br>
-          <input type="text" placeholder="E-mail" class="black-border">
-          <br>
-          <select class="black-border">
-            <option value="">What is the contact reason?</option>
-            <option value="">Doubt</option>
-            <option value="">Praise</option>
-            <option value="">Complaint</option>
-          </select>
-          <br>
-          <textarea class="black-border">Fill your message here</textarea>
-          <br>
-          <button type="submit" class="black-border">Send</button>
-        </form>
+        @component('site.layouts._components.contact_form', ["class" => 'black-border'])
+          <p>Our team will analize your message and we will respond as soon as possible</p>
+          <p>Our average time is 48 hours </p>
+        @endcomponent
       </div>
     </div>
   </div>
