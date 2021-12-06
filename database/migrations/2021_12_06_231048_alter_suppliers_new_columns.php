@@ -23,6 +23,8 @@ class AlterSuppliersNewColumns extends Migration {
    * @return void
    */
   public function down() {
-    //
+    Schema::table('suppliers', function (Blueprint $table) {
+      $table->dropColumn(['uf', 'email']);
+    });
   }
 }
