@@ -10,6 +10,8 @@ class SiteContactSeeder extends Seeder {
    * @return void
    */
   public function run() {
+
+    /*     
     $contact = new SiteContact();
     $contact->name = 'SG System';
     $contact->phone = '(12) 99874-5558';
@@ -17,5 +19,8 @@ class SiteContactSeeder extends Seeder {
     $contact->reason = 1;
     $contact->message = 'You are Welcome!';
     $contact->save();
+    */
+
+    factory(SiteContact::class, 100)->create();
   }
 }
