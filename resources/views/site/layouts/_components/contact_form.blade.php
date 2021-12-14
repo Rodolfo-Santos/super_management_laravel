@@ -1,20 +1,21 @@
 {{ $slot }}
 <form action="{{ route('site.contact') }}" method="POST">
   @csrf
-  <input name="name" type="text" placeholder="Name" class="{{ $class }}">
+  <input name="name" value="{{ old('name') }}" type="text" placeholder="Name" class="{{ $class }}">
   <br>
-  <input name="phone" type="text" placeholder="Phone" class="{{ $class }}">
+  <input name="phone" value="{{ old('phone') }}" type="text" placeholder="Phone" class="{{ $class }}">
   <br>
-  <input name="email" type="text" placeholder="E-mail" class="{{ $class }}">
+  <input name="email" value="{{ old('email') }}" type="text" placeholder="E-mail" class="{{ $class }}">
   <br>
   <select name="reason" class="{{ $class }}">
-    <option value="1">What is the contact reason?</option>
-    <option value="2">Doubt</option>
-    <option value="3">Praise</option>
-    <option value="4">Complaint</option>
+    <option value="">What is the contact reason?</option>
+    <option value="1">Doubt</option>
+    <option value="2">Praise</option>
+    <option value="3">Complaint</option>
   </select>
   <br>
-  <textarea name="message" class="{{ $class }}">Fill your message here</textarea>
+  <textarea name="message" class="{{ $class }}">{{ (old('message') != '') ? old('message') : 'Fill your message here' }}
+  </textarea>
   <br>
   <button type="submit" class="{{ $class }}">Send</button>
   <div>
