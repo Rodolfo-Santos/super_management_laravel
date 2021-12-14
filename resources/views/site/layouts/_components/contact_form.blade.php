@@ -9,9 +9,10 @@
   <br>
   <select name="reason" class="{{ $class }}">
     <option value="">What is the contact reason?</option>
-    <option value="1">Doubt</option>
-    <option value="2">Praise</option>
-    <option value="3">Complaint</option>
+
+    @foreach ($reason_list as $key => $reason)
+      <option value="{{ $key }}" {{ old('reason') == $key ? 'selected' : '' }}>{{ $reason }}</option>
+    @endforeach
   </select>
   <br>
   <textarea name="message" class="{{ $class }}">{{ (old('message') != '') ? old('message') : 'Fill your message here' }}
