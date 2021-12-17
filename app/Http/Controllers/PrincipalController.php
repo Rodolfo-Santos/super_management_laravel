@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\ContactReason;
 
 class PrincipalController extends Controller {
   public function principal() {
-    $reason_list = [
-      '1' => 'Doubt',
-      '2' => 'Praise',
-      '3' => 'Complaint'
-    ];
+    $reason_list = ContactReason::all();
 
     return view('site.principal', ['reason_list' => $reason_list]);
   }

@@ -11,7 +11,7 @@
     <option value="">What is the contact reason?</option>
 
     @foreach ($reason_list as $key => $reason)
-      <option value="{{ $key }}" {{ old('reason') == $key ? 'selected' : '' }}>{{ $reason }}</option>
+      <option value="{{ $reason->id }}" {{ old('reason') == $reason->id  ? 'selected' : '' }}>{{ $reason->contact_reason }}</option>
     @endforeach
   </select>
   <br>
