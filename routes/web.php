@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Middleware\LogAccessMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::middleware(LogAccessMiddleware::class)
+  ->get('/', 'PrincipalController@principal')
+  ->name('site.index');
+
 Route::get('/about_us', 'AboutUsController@aboutUs')->name('site.about_us');
 
 Route::get('/contact', 'ContactController@contact')->name('site.contact');
