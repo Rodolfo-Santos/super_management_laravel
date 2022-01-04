@@ -10,18 +10,10 @@ Route::post('/contact', 'ContactController@save')->name('site.contact');
 
 Route::get('/login', fn () => 'Login')->name('site.login');
 
-Route::prefix('/app')->group(function () {
-  Route::middleware('authentication')
-    ->get('/customers', fn () => 'Customers')
-    ->name('app.customers');
-
-  Route::middleware('authentication')
-    ->get('/products', fn () => 'Products')
-    ->name('app.products');
-
-  Route::middleware('authentication')
-    ->get('/suppliers', 'SuppliersController@index')
-    ->name('app.suppliers');
+Route::middleware('authentication')->prefix('/app')->group(function () {
+  Route::get('/customers', fn () => 'Customers')->name('app.customers');
+  Route::get('/products', fn () => 'Products')->name('app.products');
+  Route::get('/suppliers', 'SuppliersController@index')->name('app.suppliers');
 });
 
 Route::fallback(function () {
