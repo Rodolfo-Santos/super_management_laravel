@@ -19,6 +19,6 @@ class LogAccessMiddleware {
     $route = $request->getRequestUri();
 
     LogAccess::create(['log' => "IP $ip requested the $route route"]);
-    return Response('We arrived at middleware and ended up in the middleware itself.');
+    return $next($request);
   }
 }
