@@ -19,6 +19,11 @@ class LogAccessMiddleware {
     $route = $request->getRequestUri();
 
     LogAccess::create(['log' => "IP $ip requested the $route route"]);
-    return $next($request);
+
+    $response = $next($request);
+
+    $response->setStatusCode(201, 'The response status was modified!');
+
+    return $response;
   }
 }
