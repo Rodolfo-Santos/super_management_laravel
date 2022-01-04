@@ -10,7 +10,7 @@ Route::post('/contact', 'ContactController@save')->name('site.contact');
 
 Route::get('/login', fn () => 'Login')->name('site.login');
 
-Route::middleware('authentication')->prefix('/app')->group(function () {
+Route::middleware('authentication:ldap,visitor')->prefix('/app')->group(function () {
   Route::get('/customers', fn () => 'Customers')->name('app.customers');
   Route::get('/products', fn () => 'Products')->name('app.products');
   Route::get('/suppliers', 'SuppliersController@index')->name('app.suppliers');
