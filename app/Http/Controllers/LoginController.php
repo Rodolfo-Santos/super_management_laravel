@@ -9,7 +9,19 @@ class LoginController extends Controller {
     return view('site.login', ['title' => 'Login']);
   }
 
-  public function authenticate() {
-    return 'We got here!';
+  public function authenticate(Request $request) {
+    $rules = [
+      'user' => 'email',
+      'password' => 'required'
+    ];
+
+    $feedback = [
+      'user.email' => 'The user field (e-mail} is required',
+      'password.required' => 'The password field is required '
+    ];
+
+    $request->validate($rules, $feedback);
+
+    print_r($request->all());
   }
 }

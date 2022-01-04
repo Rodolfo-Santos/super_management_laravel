@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Middleware\LogAccessMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PrincipalController@principal')->name('site.index')->middleware('log.access');

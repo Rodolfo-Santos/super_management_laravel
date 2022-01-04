@@ -10,8 +10,12 @@
     <div class="page-information">
       <form action="{{ route('site.login') }}" method="POST" style="width: 30%; margin: 0 auto;">
         @csrf
-        <input name="user" type="text" placeholder="User" class="black-border">
-        <input name="password" type="text" placeholder="Password" class="black-border">
+        <input name="user" value="{{ old('user') }}" type="text" placeholder="User" class="black-border">
+        {{ $errors->has('user') ? $errors->first('user') : '' }} 
+
+        <input name="password" type="password" placeholder="Password" class="black-border">
+        {{ $errors->has('password') ? $errors->first('password') : '' }} 
+
         <button type="submit" class="black-border">Acessar</button>
       </form>
     </div>
