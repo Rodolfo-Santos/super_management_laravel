@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller {
@@ -22,6 +23,20 @@ class LoginController extends Controller {
 
     $request->validate($rules, $feedback);
 
-    print_r($request->all());
+    $email = $request->get('user');
+    $password = $request->get('password');
+
+    $userTable = new User();
+
+    $user = $userTable
+      ->where('email', $email)
+      ->where('password', $password)
+      ->get()
+      ->first();
+
+    if (isset($user->name)) echo 'User Exists!';
+    else echo 'User does not exists!';
+
+    print_r("<pre>$user</pre>");
   }
 }
