@@ -13,6 +13,10 @@ class LoginController extends Controller {
       $error = 'User does not exists!';
     }
 
+    if ($request->get('error') == 2) {
+      $error = 'Log in to access the page';
+    }
+
     return view('site.login', ['title' => 'Login', 'error' => $error]);
   }
 
@@ -40,8 +44,15 @@ class LoginController extends Controller {
       ->get()
       ->first();
 
-    if (isset($user->name)) echo 'User Exists!';
-    else return redirect()->route('site.login', ['error' => 1]);
+    if (isset($user->name)) {
+      session_start();
+      $_SESSION['name'] = $user->name;
+      $_SESSION['email'] = $user->email;
+
+      return redirect()->route('app.customers');
+    } else {
+      return redirect()->route('site.login', ['error' => 1]);
+    }
 
     print_r("<pre>$user</pre>");
   }

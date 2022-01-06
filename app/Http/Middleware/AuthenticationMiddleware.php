@@ -13,11 +13,11 @@ class AuthenticationMiddleware {
    * @return mixed
    */
   public function handle($request, Closure $next, $auth_method, $perfil) {
-    echo $auth_method . '-' . $perfil . '<br>';
-    if ($auth_method === 'default') echo 'Verify User and Password at Database' . '-' . $perfil . '<br>';
-    if ($auth_method === 'ldap') echo 'Verify User and Password at AD' . '-' . $perfil . '<br>';
-
-    if (true) return $next($request);
-    else return Response('Access denied! Route needs authentication.');
+    session_start();
+    if (isset($_SESSION['email']) && $_SESSION['email'] != '') {
+      return $next($request);
+    } else {
+      return redirect()->route('site.login', ['error' => 2]);
+    }
   }
 }
