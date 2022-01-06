@@ -14,7 +14,11 @@ Route::middleware('authentication:ldap,visitor')->prefix('/app')->group(function
   Route::get('/home', 'HomeController@index')->name('app.home');
   Route::get('/exit', 'LoginController@exit')->name('app.exit');
   Route::get('/customer', 'CustomerController@index')->name('app.customer');
+
   Route::get('/supplier', 'SuppliersController@index')->name('app.supplier');
+  Route::post('/supplier/list', 'SuppliersController@list')->name('app.supplier.list');
+  Route::get('/supplier/add', 'SuppliersController@add')->name('app.supplier.add');
+
   Route::get('/product', 'ProductController@index')->name('app.product');
 });
 
