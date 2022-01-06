@@ -11,12 +11,22 @@
   @include('app.supplier._partials.menu')
 
   <div class="page-info">
+    {{ $message }}
     <div style="width: 30%; margin: 0 auto;">
-      <form action="" method="post">
-        <input type="text" name="name" id="name" placeholder="Name" class="black-border">
-        <input type="text" name="site" id="site" placeholder="Site" class="black-border">
-        <input type="text" name="uf" id="uf" placeholder="UF" class="black-border">
-        <input type="text" name="email" id="email" placeholder="E-mail" class="black-border">
+      <form action="{{ route('app.supplier.add') }}" method="post">
+        @csrf
+        <input type="text" value="{{ old('name') }}" name="name" id="name" placeholder="Name" class="black-border">
+        {{ $errors->has('name') ? $errors->first('name') : '' }} 
+
+        <input type="text" value="{{ old('site') }}" name="site" id="site" placeholder="Site" class="black-border">
+        {{ $errors->has('site') ? $errors->first('site') : '' }} 
+
+        <input type="text" value="{{ old('uf') }}" name="uf" id="uf" placeholder="UF" class="black-border">
+        {{ $errors->has('uf') ? $errors->first('uf') : '' }} 
+
+        <input type="text" value="{{ old('email') }}" name="email" id="email" placeholder="E-mail" class="black-border">
+        {{ $errors->has('email') ? $errors->first('email') : '' }} 
+
         <button type="submit" class="black-border">Add</button>
       </form>
     </div>
