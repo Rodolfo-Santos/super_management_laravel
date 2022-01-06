@@ -11,9 +11,11 @@ Route::get('/login/{error?}', 'LoginController@index')->name('site.login');
 Route::post('/login', 'LoginController@authenticate')->name('site.login');
 
 Route::middleware('authentication:ldap,visitor')->prefix('/app')->group(function () {
-  Route::get('/customers', fn () => 'Customers')->name('app.customers');
-  Route::get('/products', fn () => 'Products')->name('app.products');
-  Route::get('/suppliers', 'SuppliersController@index')->name('app.suppliers');
+  Route::get('/home', 'HomeController@index')->name('app.home');
+  Route::get('/exit', 'LoginController@exit')->name('app.exit');
+  Route::get('/customer', 'CustomerController@index')->name('app.customer');
+  Route::get('/supplier', 'SuppliersController@index')->name('app.supplier');
+  Route::get('/product', 'ProductController@index')->name('app.product');
 });
 
 Route::fallback(function () {
