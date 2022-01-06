@@ -7,7 +7,7 @@ Route::get('/about_us', 'AboutUsController@aboutUs')->name('site.about_us');
 Route::get('/contact', 'ContactController@contact')->name('site.contact');
 Route::post('/contact', 'ContactController@save')->name('site.contact');
 
-Route::get('/login', 'LoginController@index')->name('site.login');
+Route::get('/login/{error?}', 'LoginController@index')->name('site.login');
 Route::post('/login', 'LoginController@authenticate')->name('site.login');
 
 Route::middleware('authentication:ldap,visitor')->prefix('/app')->group(function () {

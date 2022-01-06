@@ -6,8 +6,14 @@ use App\User;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller {
-  public function index() {
-    return view('site.login', ['title' => 'Login']);
+  public function index(Request $request) {
+
+    $error = '';
+    if ($request->get('error') == 1) {
+      $error = 'User does not exists!';
+    }
+
+    return view('site.login', ['title' => 'Login', 'error' => $error]);
   }
 
   public function authenticate(Request $request) {
@@ -35,7 +41,7 @@ class LoginController extends Controller {
       ->first();
 
     if (isset($user->name)) echo 'User Exists!';
-    else echo 'User does not exists!';
+    else return redirect()->route('site.login', ['error' => 1]);
 
     print_r("<pre>$user</pre>");
   }

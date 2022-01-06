@@ -18,6 +18,7 @@
 
         <button type="submit" class="black-border">Acessar</button>
       </form>
+      {{ isset($error) && $error != '' ? $error : '' }}
     </div>
   </div>
 
