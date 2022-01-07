@@ -10,8 +10,15 @@ class SuppliersController extends Controller {
     return view('app.supplier.index');
   }
 
-  public function list() {
-    return view('app.supplier.list');
+  public function list(Request $request) {
+    $suppliers = Supplier
+      ::where('name', 'like', '%' . $request->input('name') . '%')
+      ->where('site', 'like', '%' . $request->input('site') . '%')
+      ->where('uf', 'like', '%' . $request->input('uf') . '%')
+      ->where('email', 'like', '%' . $request->input('email') . '%')
+      ->get();
+
+    return view('app.supplier.list', ['suppliers' => $suppliers]);
   }
 
   public function add(Request $request) {
