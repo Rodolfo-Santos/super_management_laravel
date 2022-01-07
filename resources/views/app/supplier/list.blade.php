@@ -30,7 +30,7 @@
               <td>{{ $supplier->site}}</td>
               <td>{{ $supplier->uf}}</td>
               <td>{{ $supplier->email}}</td>
-              <td>Edit</td>
+              <td><a href="{{ route('app.supplier.edit', $supplier->id) }}">Edit</a></td>
               <td>Delete</td>
             </tr>
           @endforeach
