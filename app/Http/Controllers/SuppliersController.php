@@ -24,7 +24,7 @@ class SuppliersController extends Controller {
   public function add(Request $request) {
     $message = '';
 
-    if ($request->input('_token') != '') {
+    if ($request->input('_token') != '' && $request->input('id') == '') {
       $rules = [
         'name' => 'required|min:3|max:40',
         'site' => 'required',
@@ -49,6 +49,21 @@ class SuppliersController extends Controller {
       $message = 'Registration successfully complete!';
     }
 
+    if ($request->input('_token') != '' && $request->input('id') != '') {
+      $supplier = Supplier::find($request->input('id'));
+      $update = $supplier->update($request->all());
+
+      $message = $update ? 'Data updated successfully!' : 'Update data is failed!';
+
+      return redirect()->route('app.supplier.edit', ['id' => $request->input('id'), 'message' => $message]);
+    }
+
     return view('app.supplier.add', ['message' => $message]);
+  }
+
+  public function edit($id, $message = '') {
+    $supplier = Supplier::find($id);
+
+    return view('app.supplier.add', ['supplier' => $supplier, 'message' => $message]);
   }
 }
