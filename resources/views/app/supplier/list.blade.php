@@ -37,7 +37,10 @@
         </tbody>
       </table>
       
-      {{ $suppliers->appends($request)->links() }}
+      <div>
+        {{ $suppliers->appends($request)->links() }}
+      </div>
+      <div>Show {{ $suppliers->count() }} of {{ $suppliers->total() }} (de {{ $suppliers->firstItem() }} to {{ $suppliers->lastItem() }})</div>
     </div>
   </div>
 </div>
