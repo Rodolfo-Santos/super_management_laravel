@@ -207,3 +207,12 @@ span {
 .social-networks img {
   margin: 0px 15px 0px 15px;
 }
+
+.pagination ul {
+  list-style: none;
+}
+
+.pagination li {
+  display: inline-block;
+  margin: 0 5px;
+}

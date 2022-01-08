@@ -16,9 +16,9 @@ class SuppliersController extends Controller {
       ->where('site', 'like', '%' . $request->input('site') . '%')
       ->where('uf', 'like', '%' . $request->input('uf') . '%')
       ->where('email', 'like', '%' . $request->input('email') . '%')
-      ->get();
+      ->paginate(2);
 
-    return view('app.supplier.list', ['suppliers' => $suppliers]);
+    return view('app.supplier.list', ['suppliers' => $suppliers, 'request' => $request->all()]);
   }
 
   public function add(Request $request) {
