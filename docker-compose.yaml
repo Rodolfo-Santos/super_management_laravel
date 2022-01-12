@@ -8,3 +8,16 @@ services:
     volumes:
       - ./:/usr/share/nginx/
     
+  mysql-app:
+    image: mysql:8.0.27
+    ports:
+    - "3306:3306"
+    environment:
+      MYSQL_DATABASE: super_management_laravel
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - app-network
+  
+networks:
+  app-network:
+    driver: bridge
