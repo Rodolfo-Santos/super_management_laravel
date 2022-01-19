@@ -63,7 +63,11 @@ class SuppliersController extends Controller {
 
   public function edit($id, $message = '') {
     $supplier = Supplier::find($id);
-
     return view('app.supplier.add', ['supplier' => $supplier, 'message' => $message]);
+  }
+
+  public function delete($id) {
+    Supplier::find($id)->delete();
+    return redirect()->route('app.supplier');
   }
 }

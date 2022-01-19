@@ -21,6 +21,7 @@ Route::middleware('authentication:ldap,visitor')->prefix('/app')->group(function
   Route::get('/supplier/add', 'SuppliersController@add')->name('app.supplier.add');
   Route::post('/supplier/add', 'SuppliersController@add')->name('app.supplier.add');
   Route::get('/supplier/edit/{id}/{message?}', 'SuppliersController@edit')->name('app.supplier.edit');
+  Route::get('/supplier/delete/{id}/{message?}', 'SuppliersController@delete')->name('app.supplier.delete');
 
   Route::get('/product', 'ProductController@index')->name('app.product');
 });

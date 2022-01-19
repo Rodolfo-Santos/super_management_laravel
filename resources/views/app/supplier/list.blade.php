@@ -31,7 +31,7 @@
               <td>{{ $supplier->uf}}</td>
               <td>{{ $supplier->email}}</td>
               <td><a href="{{ route('app.supplier.edit', $supplier->id) }}">Edit</a></td>
-              <td>Delete</td>
+              <td><a href="{{ route('app.supplier.delete', $supplier->id) }}">Delete</a></td>
             </tr>
           @endforeach
         </tbody>
